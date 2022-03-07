@@ -1,0 +1,88 @@
+.right_panel {
+  background-color: orange;
+  width: 200px;
+  height: 200px;
+  margin-top: 50px;
+  position: relative;
+  left: 600px;
+}
+.parent_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.childone {
+  /* background-color: red; */
+  height: 90px;
+  width: 350px;
+  position: absolute;
+  top: 120px;
+  left: 270px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px #c2c2c2;
+}
+.childtwo {
+  /* background-color: orange; */
+  height: 90px;
+ width: 350px;
+  position: absolute;
+  top: 120px;
+  left: 670px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px #c2c2c2;
+}
+.childthree {
+  /* background-color: blue; */
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  right: 0px;
+  top: 71px;
+  height: 91vh;
+  box-shadow: 1px 1px 8px #c2c2c2;
+}
+/* .rounded-circle {
+  position: absolute;
+  right: 175px;
+  height: 60px;
+  top: 20px;
+} */
+
+.dashboard_profile_pic{
+    position: absolute;
+  right: 175px;
+  height: 60px;
+  top: 20px;
+}
+
+.user_data_wrapper {
+  padding: 13px;
+}
+.user_data_title {
+  font-size: 15px;
+  color: #757272;
+}
+.user_data {
+  font-size: 14px;
+  position: absolute;
+  margin-top: 10px;
+}
+.projects_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 90px;
+  font-size: 25px;
+  color: #000;
+}
+
+.projects_title_span{
+    position: absolute;
+    right: 50px;
+    font-size: 35px;
+}
+.projects_title_span_two{
+      position: absolute;
+    right: 35px;
+    font-size: 35px;
+}

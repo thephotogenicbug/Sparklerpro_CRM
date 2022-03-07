@@ -15,7 +15,7 @@ const routes = [
     icon: <MdOutlineSpaceDashboard className="sidebar_icons" />,
   },
   {
-    path: "/users",
+    path: "/tickets",
     name: "Tickets",
     icon: <FaTicketAlt className="sidebar_icons" />,
   },

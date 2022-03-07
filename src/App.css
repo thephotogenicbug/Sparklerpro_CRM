@@ -97,14 +97,14 @@ main {
   border-bottom: #fff 0.5px solid;
 }
 .create_ticket_btn {
-  height: 42px;
+  height: 48px;
   padding: 8px;
   background-color: #187381;
   color: #ffff;
   border-style: none;
   outline: none;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 16px;
   position: relative;
   left: 18px;
 }
@@ -123,7 +123,7 @@ main {
 }
 .top_bar_right_content {
   position: relative;
-  right: 280px;
+  right: 240px;
   bottom: 5px;
   font-size: 28px;
 }
@@ -146,9 +146,22 @@ main {
   justify-content: center;
   align-items: center;
   position: relative;
-  left: 50px;
+  left: 200px;
 }
 .table_bg{
   background-color: #ffff;
 
+}
+
+.create_ticket_btn_home{
+  height: 48px;
+  padding: 8px;
+  background-color: #187381;
+  color: #ffff;
+  border-style: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 16px;
+  position: relative;
+  left: 338px;
 }
