@@ -200,9 +200,9 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return "Choose Service";
+       return "Choose Service";
     case 1:
-      return "Choose Your Budget";
+       return "Budget";
     case 2:
       return "Attachment";
     default:
@@ -226,6 +226,10 @@ export default function LinaerStepper() {
   const handleReset = () => {
     setActiveStep(0);
   };
+
+  const Submitted = () =>{
+    console.log("Form Submitted Successfully")
+  }
 
   return (
     <>
@@ -271,9 +275,16 @@ export default function LinaerStepper() {
                 >
                   Back
                 </Button>
-                <button className="button" onClick={handleNext}>
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </button>
+                  {activeStep === steps.length - 1 ? (
+                    <button className="button" onClick={Submitted}>
+                      Finish
+                    </button>
+                  ) : (
+                    <button className="button" onClick={handleNext}>
+                      Next
+                    </button>
+                  )}
+               
               </div>
             </div>
           )}
