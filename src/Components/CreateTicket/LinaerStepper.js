@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -16,7 +16,13 @@ import StepConnector from "@material-ui/core/StepConnector";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TopBar from "../Navbar/TopBar";
-import './ticketStyles.css'
+import "./ticketStyles.css";
+import {
+  FormControl,
+  FormControlLabel,
+  RadioGroup,
+  Radio,
+} from "@material-ui/core";
 
 const QontoConnector = withStyles({
   alternativeLabel: {
@@ -182,7 +188,7 @@ ColorlibStepIcon.propTypes = {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    marginTop:"80px"
+    marginTop: "80px",
   },
   button: {
     marginRight: theme.spacing(1),
@@ -194,26 +200,99 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ["Choose Service", "Choose Your Budget", "Attachment", "Enter Your Notes"];
+  return [
+    "Choose Service",
+    "Choose Your Budget",
+    "Attachment",
+    "Enter Your Notes",
+  ];
 }
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-       return "Choose Service";
-    case 1:
-       return "Budget";
-    case 2:
-      return "Attachment";
-    default:
-      return "Enter Your Notes";
-  }
-}
+
 
 export default function LinaerStepper() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(1);
+  const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
+
+  const service = ["App Development", "Web Development"];
+  const [myservice, setMyService] = useState('')
+
+
+
+
+
+ function getStepContent(step) {
+   switch (step) {
+     case 0:
+       return (
+         <>
+           <div className="container">
+             <div className="row">
+               <div className="col-md-12">
+                 <div className="row">
+                   <div className="col-md-1"></div>
+                   <div className="col-md-4">
+
+                     <select className="form-control">
+                       {service.map((xservice, index) => {
+                         return (
+                           <option>
+                             <Fragment onClick={() => setMyService(xservice)}>
+                               {xservice}
+                             </Fragment>
+                           </option>
+                         );
+                       })}
+                     </select>
+                   </div>
+                   <div className="col-md-4">
+                    
+                     <div>
+                       <select className="form-control">
+                         <option>{myservice}</option>
+                       </select>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </>
+       );
+     case 1:
+       return (
+         <div className="container">
+           <div className="row">
+             <div className="col-md-1"></div>
+             <div className="col-md-4">
+                <label>Enter Your Budget</label>
+               <input type="text" className="form-control" />
+             </div>
+             <div className="col-md-4"></div>
+           </div>
+         </div>
+       );
+     case 2:
+       return "Attachment";
+     case 3:
+       return (
+         <div className="container">
+           <div className="row">
+             <div className="col-md-1"></div>
+             <div className="col-md-4">
+               <label>Enter Notes</label>
+               <input type="text" className="form-control" />
+             </div>
+             <div className="col-md-4"></div>
+           </div>
+         </div>
+       );
+     default:
+       return "Enter Your Notes";
+   }
+ }
+
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -227,9 +306,9 @@ export default function LinaerStepper() {
     setActiveStep(0);
   };
 
-  const Submitted = () =>{
-    console.log("Form Submitted Successfully")
-  }
+  const Submitted = () => {
+    console.log("Form Submitted Successfully");
+  };
 
   return (
     <>
@@ -268,13 +347,14 @@ export default function LinaerStepper() {
                 {getStepContent(activeStep)}
               </Typography>
               <div>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  className={classes.button}
-                >
-                  Back
-                </Button>
+                <div className="button_container">
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    className={classes.button}
+                  >
+                    Back
+                  </Button>
                   {activeStep === steps.length - 1 ? (
                     <button className="button" onClick={Submitted}>
                       Finish
@@ -284,7 +364,7 @@ export default function LinaerStepper() {
                       Next
                     </button>
                   )}
-               
+                </div>
               </div>
             </div>
           )}

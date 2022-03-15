@@ -16,3 +16,9 @@
     left: 150px;
     margin-top: 50px;
 }
+
+.button_container{
+    position: absolute;
+    top: 150px;
+    left: 650px;
+}
