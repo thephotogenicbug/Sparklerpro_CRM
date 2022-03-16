@@ -17,6 +17,8 @@ const Tickets = () => {
    useEffect(() => {
      getTicket();
    }, []);
+
+   
   return (
     <>
       <TopBar title="Tickets" />
@@ -37,10 +39,8 @@ const Tickets = () => {
             <table className="table table_bg text-center table-lg">
               <thead>
                 <tr>
-                  <th>Ticket ID</th>
-                  <th>Project Name</th>
-                  <th>Date</th>
-                  <th>Due Date</th>
+                  <th>Service Name</th>
+                  <th>Sub Service Name</th>
                   <th>Notes</th>
                   <th>Budget</th>
                   <th>Status</th>
@@ -51,14 +51,16 @@ const Tickets = () => {
                 {ticket.reverse().map((xproduct, index) => {
                   return (
                     <tr key={index}>
-                      <td>{xproduct.ticketid}</td>
-                      <td>{xproduct.projectname}</td>
-                      <td>{xproduct.date}</td>
-                      <td>{xproduct.duedate}</td>
+                      <td>{xproduct.myservice}</td>
+                      <td>{xproduct.subservice}</td>
                       <td>{xproduct.notes}</td>
                       <td>{xproduct.budget}</td>
                       <td>{xproduct.status}</td>
-                      <td>{xproduct.image}</td>
+
+                      <td>
+                        <i class="fa-solid fa-pen-to-square m-2 text-warning"></i>
+                        <i class="fa-solid fa-trash-can m-2 text-danger"></i>
+                      </td>
                     </tr>
                   );
                 })}

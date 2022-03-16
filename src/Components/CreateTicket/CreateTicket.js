@@ -17,6 +17,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TopBar from "../Navbar/TopBar";
 import "./ticketStyles.css";
+import axios from "axios";
 import {
   FormControl,
   FormControlLabel,
@@ -215,9 +216,61 @@ export default function CreateTicket() {
 
   const [myservice, setMyService] = useState("");
   const [subservice, setSubService] = useState("");
+  const [budget, setMyBudget] = useState("");
+  const [notes, setMyNotes] = useState("");
+  const [status, setMyStatus] = useState("Pending");
+  const [attachment, setMyAttachment] = useState(
+    "https://res.cloudinary.com/dv5jjlsd7/image/upload/v1646286140/21c415cb11a98f13d02bedd1134f834b_qkba5x.png"
+  );
+   const [pic, setPic] = useState(
+     "https://res.cloudinary.com/dv5jjlsd7/image/upload/v1631444571/user_1_qy7hlx.png"
+   );
+   const [picMessage, setPicMessage] = useState(null);
+  const [message, processMessage] = useState("")
 
   console.log(myservice);
   console.log(subservice);
+
+  const SubmitTicket = () =>{
+    var url = "http://localhost:5000/createticket";
+    var input = {myservice: myservice, subservice:subservice, budget:budget, notes:notes, status:status, attachment:attachment}
+    axios.post(url, input).then(response =>{
+      processMessage(response.data.message)
+      setMyService("")
+      setSubService("")
+      setMyBudget("")
+      setMyNotes("");
+    })
+  }
+
+   const postDetails = (pics) => {
+     if (
+       pics ===
+       "https://res.cloudinary.com/dv5jjlsd7/image/upload/v1631444571/user_1_qy7hlx.png"
+     ) {
+       return setPicMessage("Please Select an Image");
+     }
+     setPicMessage(null);
+     if (pics.type === "image/jpeg" || pics.type === "image/png") {
+       const data = new FormData();
+       data.append("file", pics);
+       data.append("upload_preset", "noteszipper");
+       data.append("cloud_name", "dv5jjlsd7");
+       fetch("https://api.cloudinary.com/v1_1/dv5jjlsd7/image/upload", {
+         method: "post",
+         body: data,
+       })
+         .then((res) => res.json())
+         .then((data) => {
+           setPic(data.url.toString());
+         })
+         .catch((err) => {
+           console.log(err);
+         });
+     } else {
+       return setPicMessage("Please Select an Image");
+     }
+   };
 
   function getStepContent(step) {
     switch (step) {
@@ -279,7 +332,7 @@ export default function CreateTicket() {
               <div className="col-md-1"></div>
               <div className="col-md-4">
                 <label>Enter Your Budget</label>
-                <input type="text" className="form-control" />
+                <input type="text" className="form-control" value={budget} onChange={e => setMyBudget(e.target.value)} />
               </div>
               <div className="col-md-4"></div>
             </div>
@@ -294,7 +347,7 @@ export default function CreateTicket() {
               <div className="col-md-1"></div>
               <div className="col-md-4">
                 <label>Enter Notes</label>
-                <input type="text" className="form-control" />
+                <input type="text" className="form-control" value={notes} onChange={e => setMyNotes(e.target.value)} />
               </div>
               <div className="col-md-4"></div>
             </div>
@@ -367,7 +420,7 @@ export default function CreateTicket() {
                     Back
                   </Button>
                   {activeStep === steps.length - 1 ? (
-                    <button className="button" onClick={Submitted}>
+                    <button className="button" onClick={SubmitTicket}>
                       Finish
                     </button>
                   ) : (
