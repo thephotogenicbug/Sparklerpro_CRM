@@ -5,6 +5,7 @@ import SideBar from './Components/Navbar/SideBar';
 import TopBar from './Components/Navbar/TopBar';
 import Tickets from './Components/Home/Tickets';
 import CreateTicket from './Components/CreateTicket/CreateTicket';
+import EditTicket from './Components/Home/EditTicket';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tickets" element={<Tickets />} />
-          <Route path="/form" element={<CreateTicket />} />
+          <Route path="/createticket" element={<CreateTicket />} />
+          <Route path="/:id/edit-ticket" element={<EditTicket />} />
         </Routes>
       </SideBar>
     </Router>

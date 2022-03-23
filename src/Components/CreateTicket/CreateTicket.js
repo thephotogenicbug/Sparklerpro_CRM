@@ -220,7 +220,7 @@ export default function CreateTicket() {
   const [notes, setMyNotes] = useState("");
   const [status, setMyStatus] = useState("Pending");
   const [attachment, setMyAttachment] = useState(
-    "https://res.cloudinary.com/dv5jjlsd7/image/upload/v1646286140/21c415cb11a98f13d02bedd1134f834b_qkba5x.png"
+    "https://res.cloudinary.com/dm9yax6pz/image/upload/v1648058574/user_1_qy7hlx_uljop1.png"
   );
    const [pic, setPic] = useState(
      "https://res.cloudinary.com/dv5jjlsd7/image/upload/v1631444571/user_1_qy7hlx.png"
@@ -246,7 +246,7 @@ export default function CreateTicket() {
    const postDetails = (pics) => {
      if (
        pics ===
-       "https://res.cloudinary.com/dv5jjlsd7/image/upload/v1631444571/user_1_qy7hlx.png"
+       "https://res.cloudinary.com/dm9yax6pz/image/upload/v1648058574/user_1_qy7hlx_uljop1.png"
      ) {
        return setPicMessage("Please Select an Image");
      }
@@ -254,9 +254,9 @@ export default function CreateTicket() {
      if (pics.type === "image/jpeg" || pics.type === "image/png") {
        const data = new FormData();
        data.append("file", pics);
-       data.append("upload_preset", "noteszipper");
-       data.append("cloud_name", "dv5jjlsd7");
-       fetch("https://api.cloudinary.com/v1_1/dv5jjlsd7/image/upload", {
+       data.append("upload_preset", "udsettjo");
+       data.append("cloud_name", "dm9yax6pz");
+       fetch("https://api.cloudinary.com/v1_1/dm9yax6pz/image/upload", {
          method: "post",
          body: data,
        })
@@ -271,6 +271,8 @@ export default function CreateTicket() {
        return setPicMessage("Please Select an Image");
      }
    };
+
+  
 
   function getStepContent(step) {
     switch (step) {
@@ -339,7 +341,22 @@ export default function CreateTicket() {
           </div>
         );
       case 2:
-        return "Attachment";
+        return (
+          <div className="container">
+            <div className="row">
+              <div className="col-md-1"></div>
+              <div className="col-md-4">
+                <label>Attach Your Document</label>
+                <input
+                  type="file"
+                  className="form-control"
+                  onChange={(e) => postDetails(e.target.files[0])}
+                />
+              </div>
+              <div className="col-md-4"></div>
+            </div>
+          </div>
+        );
       case 3:
         return (
           <div className="container">
@@ -347,7 +364,12 @@ export default function CreateTicket() {
               <div className="col-md-1"></div>
               <div className="col-md-4">
                 <label>Enter Notes</label>
-                <input type="text" className="form-control" value={notes} onChange={e => setMyNotes(e.target.value)} />
+                <textarea rows={10}
+                  className="form-control"
+                  value={notes}
+                  onChange={(e) => setMyNotes(e.target.value)}
+                ></textarea>
+                {/* <input type="text" className="form-control" /> */}
               </div>
               <div className="col-md-4"></div>
             </div>

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTicketAlt } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 import { useState } from "react";
@@ -93,9 +93,11 @@ const SideBar = ({ children }) => {
                 animate="show"
                 exit="hidden"
               >
-                <button className="create_ticket_btn">
-                  CREATE TICKET <AiOutlinePlus className="icons" />{" "}
-                </button>
+                <Link to="/createticket">
+                  <button className="create_ticket_btn">
+                    CREATE TICKET <AiOutlinePlus className="icons" />{" "}
+                  </button>
+                </Link>
               </motion.h1>
             )}
           </AnimatePresence>

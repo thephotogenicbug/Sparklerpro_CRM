@@ -27,7 +27,7 @@ const Tickets = () => {
           <div className="col-md-4"></div>
           <div className="col-md-4"></div>
           <div className="col-md-4">
-            <Link to="/">
+            <Link to="/createticket">
               <button className="create_ticket_btn_home">
                 Create New Ticket <AiOutlinePlus className="icons" />
               </button>
@@ -58,7 +58,9 @@ const Tickets = () => {
                       <td>{xproduct.status}</td>
 
                       <td>
-                        <i class="fa-solid fa-pen-to-square m-2 text-warning"></i>
+                        <Link to={`/${xproduct.id}/edit-ticket`}>
+                          <i class="fa-solid fa-pen-to-square m-2 text-warning"></i>
+                        </Link>
                         <i class="fa-solid fa-trash-can m-2 text-danger"></i>
                       </td>
                     </tr>
