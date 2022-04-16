@@ -4,9 +4,11 @@ import { FiEdit3 } from "react-icons/fi";
 import { ImBin } from "react-icons/im";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const Tickets = () => {
 
    const [ticket, processTicket] = useState([]);
+   const [deleteTicketMessage, processDeleteTicketMessage] = useState("")
    const getTicket = () => {
      const url = "http://localhost:5000/getallticket";
      fetch(url)
@@ -16,13 +18,27 @@ const Tickets = () => {
 
    useEffect(() => {
      getTicket();
-   }, []);
+   }, [deleteTicketMessage]);
+
+
+   const deleteTicket = (id) =>{
+     axios.delete(`http://localhost:5000/deleteticket/${id}`)
+     .then(response => processDeleteTicketMessage("Ticket Deleted Successfully...!"))
+   }
+
+    console.log(deleteTicketMessage)
+
 
    
   return (
     <>
       <TopBar title="Tickets" />
       <div className="container mt-5 pt-5">
+        <div className="row">
+          <div className="col-md-12 text-center">
+            <p className="text-center text-danger">{deleteTicketMessage}</p>
+          </div>
+        </div>
         <div className="row">
           <div className="col-md-4"></div>
           <div className="col-md-4"></div>
@@ -61,7 +77,13 @@ const Tickets = () => {
                         <Link to={`/${xproduct.id}/edit-ticket`}>
                           <i class="fa-solid fa-pen-to-square m-2 text-warning"></i>
                         </Link>
-                        <i class="fa-solid fa-trash-can m-2 text-danger"></i>
+                        <i
+                          class="fa-solid fa-trash-can m-2 text-danger"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            deleteTicket(xproduct.id);
+                          }}
+                        ></i>
                       </td>
                     </tr>
                   );

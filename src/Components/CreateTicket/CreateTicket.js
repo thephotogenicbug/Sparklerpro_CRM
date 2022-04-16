@@ -334,7 +334,16 @@ export default function CreateTicket() {
               <div className="col-md-1"></div>
               <div className="col-md-4">
                 <label>Enter Your Budget</label>
-                <input type="text" className="form-control" value={budget} onChange={e => setMyBudget(e.target.value)} />
+                {/* <select className="form-control" >
+                  <option>INR</option>
+                  <option>USD</option>
+                </select> */}
+                <input
+                  type="text"
+                  className="form-control"
+                  value={budget}
+                  onChange={(e) => setMyBudget(e.target.value)}
+                />
               </div>
               <div className="col-md-4"></div>
             </div>
