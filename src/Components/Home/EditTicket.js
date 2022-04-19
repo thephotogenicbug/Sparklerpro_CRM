@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import SideBar from '../Navbar/SideBar';
 import TopBar from '../Navbar/TopBar';
 
 const EditTicket = () => {
@@ -43,6 +44,9 @@ const EditTicket = () => {
 
   return (
     <>
+     <SideBar>
+
+
       <TopBar title="Edit Ticket" />
       <div className="container mt-5 py-5">
         <div className="col-md-12 ">
@@ -91,6 +95,7 @@ const EditTicket = () => {
           </div>
         </div>
       </div>
+     </SideBar>
     </>
   );
 }

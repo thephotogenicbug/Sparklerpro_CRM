@@ -4,10 +4,13 @@ import {FiEdit3} from 'react-icons/fi'
 import {ImBin} from 'react-icons/im'
 import { AiOutlinePlus } from "react-icons/ai";
 import './Home.css'
+import SideBar from '../Navbar/SideBar';
 
 const Home = () => {
   return (
     <>
+     <SideBar>
+
       <TopBar title="Dashboard" />
       <div className="container">
         <div className="row">
@@ -68,6 +71,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+     </SideBar>
     </>
   );
 }

@@ -1,0 +1,68 @@
+body{
+  overflow: hidden;
+}
+
+.loginpage_title{
+  position: relative;
+  top: -800px;
+  color: #187381;
+
+}
+.loginpage_bottom_bar{
+ position: relative;
+ left: 600px;
+  height: 4px;
+  width: 100px;
+  background-color: #FED03C;
+}
+
+.loginpage_input_field{
+  position: relative;
+ top: -800px;
+}
+.login_control{
+   border:none;
+    border-bottom: 1px solid #333;
+    padding: 5px 10px;
+    outline: none;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease; 
+    text-indent: -100%;
+    opacity: 1;
+ }
+
+ .loginpage_button{
+   width: 150px;
+   height: 40px;
+   outline: none;
+   border: none;
+   background-color: #FED03C;
+   color: white;
+   font-weight: bold;
+   border-radius: 5px;
+   position: relative;
+   left: 120px;
+ }
+
+ .right_div{
+   background-color: #FED03C;
+   height: 900px;
+   transform: rotate(125deg);
+   position:relative;
+   left: 980px;
+   top: -580px;
+      box-shadow: 3px 36px 19px #a5a2a2;
+  
+ }
+
+.left_div{
+  background-color: #FED03C;
+  height: 1200px;
+  position: relative;
+  top: -1100px;
+   transform: rotate(125deg);
+       box-shadow: 3px 36px 19px #a5a2a2;
+   
+}

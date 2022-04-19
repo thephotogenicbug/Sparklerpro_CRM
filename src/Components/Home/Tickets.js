@@ -5,6 +5,7 @@ import { ImBin } from "react-icons/im";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import SideBar from "../Navbar/SideBar";
 const Tickets = () => {
 
    const [ticket, processTicket] = useState([]);
@@ -32,6 +33,8 @@ const Tickets = () => {
    
   return (
     <>
+      <SideBar>
+
       <TopBar title="Tickets" />
       <div className="container mt-5 pt-5">
         <div className="row">
@@ -94,6 +97,7 @@ const Tickets = () => {
         </div>
       </div>
       <div></div>
+      </SideBar>
     </>
   );
 };

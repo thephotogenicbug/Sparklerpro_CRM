@@ -6,18 +6,20 @@ import TopBar from './Components/Navbar/TopBar';
 import Tickets from './Components/Home/Tickets';
 import CreateTicket from './Components/CreateTicket/CreateTicket';
 import EditTicket from './Components/Home/EditTicket';
+import LoginPage from './Components/ClientLogin/ClientLoginPage';
+import ClientRegisterPage from './Components/ClientLogin/ClientRegisterPage';
 
 function App() {
   return (
     <Router>
-      <SideBar>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tickets" element={<Tickets />} />
-          <Route path="/createticket" element={<CreateTicket />} />
-          <Route path="/:id/edit-ticket" element={<EditTicket />} />
-        </Routes>
-      </SideBar>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<ClientRegisterPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/tickets" element={<Tickets />} />
+        <Route path="/createticket" element={<CreateTicket />} />
+        <Route path="/:id/edit-ticket" element={<EditTicket />} />
+      </Routes>
     </Router>
   );
 }

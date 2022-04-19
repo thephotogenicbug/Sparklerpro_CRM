@@ -23,6 +23,7 @@ main {
   color: white;
   height: 100vh;
   overflow-y: auto;
+  z-index: 100;
 }
 
 .sidebar_icons {
@@ -188,3 +189,5 @@ main {
   border-radius: 5px;
   font-size: 16px;
 }
+
+

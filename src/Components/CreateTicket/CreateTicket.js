@@ -24,6 +24,7 @@ import {
   RadioGroup,
   Radio,
 } from "@material-ui/core";
+import SideBar from "../Navbar/SideBar";
 
 const QontoConnector = withStyles({
   alternativeLabel: {
@@ -267,18 +268,21 @@ export default function CreateTicket() {
          .catch((err) => {
            console.log(err);
          });
-     } else {
-       return setPicMessage("Please Select an Image");
-     }
-   };
+        } else {
+          return setPicMessage("Please Select an Image");
+        }
+      };
+      
+      
+      
+      function getStepContent(step) {
+        switch (step) {
+          case 0:
+          return (
+            <>
+          
 
-  
 
-  function getStepContent(step) {
-    switch (step) {
-      case 0:
-        return (
-          <>
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
@@ -407,6 +411,9 @@ export default function CreateTicket() {
 
   return (
     <>
+      <SideBar>
+
+
       <TopBar title="Create Ticket" />
       <div className={classes.root}>
         <Stepper
@@ -465,6 +472,7 @@ export default function CreateTicket() {
           )}
         </div>
       </div>
+      </SideBar>
     </>
   );
 }
