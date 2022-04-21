@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import Logo from './logo.png'
 import "./LoginPage.css";
+import axios from 'axios';
 const LoginPage = () => {
 
   const [username, processUserName] = useState("");
   const [password, processPassword] = useState("");
 
-  
+  const Login = () => {
+     axios.post("http://localhost:5000/auth/login", {username:username, password: password}).then((response) =>{
+       console.log(response.data)
+     })
+  }
 
   return (
     <div className="container login_container">
@@ -47,7 +52,7 @@ const LoginPage = () => {
             />
           </div>
           <div className="loginpage_input_field mt-4">
-            <button className="loginpage_button">
+            <button className="loginpage_button" onClick={Login}>
               {" "}
               <i class="fa-solid fa-circle-arrow-right"></i> CONTINUE
             </button>

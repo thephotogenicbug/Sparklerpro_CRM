@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import Logo from "./logo.png";
 import "./LoginPage.css";
-import axios from 'axios'
+import axios from 'axios';
 const ClientRegisterPage = () => {
   const [username, processUserName] = useState("");
   const [password, processPassword] = useState("");
-  const [mobile, processMobile] = useState("");
-  const [email, processEmail] = useState("");
 
 
-  const Register = () =>{
-      axios.post("http://localhost:5000/register", {uname:username, password:password, mobile:mobile, email:email})
-      .then((response =>{
-          console.log(response)
-      }))
-
-      
+  const Register = () => {
+     axios.post("http://localhost:5000/auth", {username:username, password: password}).then((response) =>{
+       console.log(response.data)
+     })
   }
+
 
   return (
     <div className="container login_container">
@@ -50,6 +46,7 @@ const ClientRegisterPage = () => {
               type="text"
               className="form-control login_control"
               placeholder="Username"
+              value={username}
               onChange={(e) => processUserName(e.target.value)}
             />
           </div>
@@ -58,23 +55,8 @@ const ClientRegisterPage = () => {
               type="text"
               className="form-control login_control"
               placeholder="Password"
+              value={password}
               onChange={(e) => processPassword(e.target.value)}
-            />
-          </div>
-          <div className="loginpage_input_field mt-4">
-            <input
-              type="text"
-              className="form-control login_control"
-              placeholder="Mobile No"
-              onChange={(e) => processMobile(e.target.value)}
-            />
-          </div>
-          <div className="loginpage_input_field mt-4">
-            <input
-              type="text"
-              className="form-control login_control"
-              placeholder="Email ID"
-              onChange={(e) => processEmail(e.target.value)}
             />
           </div>
           <div className="loginpage_input_field mt-4">

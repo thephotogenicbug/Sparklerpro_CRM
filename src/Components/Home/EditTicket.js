@@ -11,16 +11,26 @@ const EditTicket = () => {
     const [budget, processMyBudget] = useState("")
     const [notes, processMyNotes] = useState("")
 
+    // const getTicketInfo = () =>{
+    //     var url = `http://localhost:5000/createticket/byId/${id}`
+    //     var input = {"id": id};
+    //     axios.post(url , input)
+    //     .then(response =>{
+    //         processMyService(response.data[0].myservice)
+    //         processSubService(response.data[0].subservice);
+    //         processMyBudget(response.data[0].budget);
+    //         processMyNotes(response.data[0].notes);
+    //     })
+    // }
+
     const getTicketInfo = () =>{
-        var url = "http://localhost:5000/getticketinfo";
-        var input = {"id": id};
-        axios.post(url , input)
-        .then(response =>{
-            processMyService(response.data[0].myservice)
-            processSubService(response.data[0].subservice);
-            processMyBudget(response.data[0].budget);
-            processMyNotes(response.data[0].notes);
-        })
+      axios.get(`http://localhost:5000/createticket/byId/${id}`)
+      .then((response) => {
+        processMyService(response.data.myservice);
+        processSubService(response.data.subservice);
+        processMyBudget(response.data.budget);
+        processMyNotes(response.data.notes);
+      })
     }
 
     useEffect(() =>{

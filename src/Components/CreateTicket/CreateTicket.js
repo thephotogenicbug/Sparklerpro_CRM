@@ -280,9 +280,6 @@ export default function CreateTicket() {
           case 0:
           return (
             <>
-          
-
-
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
@@ -363,6 +360,7 @@ export default function CreateTicket() {
                 <input
                   type="file"
                   className="form-control"
+                  value={attachment}
                   onChange={(e) => postDetails(e.target.files[0])}
                 />
               </div>

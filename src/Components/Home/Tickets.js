@@ -11,7 +11,7 @@ const Tickets = () => {
    const [ticket, processTicket] = useState([]);
    const [deleteTicketMessage, processDeleteTicketMessage] = useState("")
    const getTicket = () => {
-     const url = "http://localhost:5000/getallticket";
+     const url = "http://localhost:5000/createticket";
      fetch(url)
        .then((response) => response.json())
        .then((allproduct) => processTicket(allproduct));
